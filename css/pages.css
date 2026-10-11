@@ -1,0 +1,107 @@
+/* css/pages.css — Page system + CanSat gauge grid */
+
+/* ===== NAV ACTIVE STATE ===== */
+.nav-item.active {
+  background: linear-gradient(135deg, rgba(152,251,152,0.30), rgba(146,225,255,0.25));
+  border-color: var(--mint);
+  box-shadow: 0 0 20px rgba(152,251,152,0.40);
+}
+
+/* ===== PAGE SYSTEM ===== */
+.page { width: 100%; }
+
+/* ===== CANSAT GAUGE GRID ===== */
+.cansat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (min-width: 1400px) {
+  .cansat-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.gauge-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px 16px 16px;
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.gauge-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(167,139,250,0.06) 0%, rgba(146,225,255,0.04) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.gauge-card:hover {
+  border-color: rgba(167,139,250,0.40);
+  box-shadow: 0 0 28px rgba(167,139,250,0.12);
+}
+
+.gauge-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sky);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.gauge-wrap {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+.gauge-canvas { width: 180px !important; height: 180px !important; }
+
+.gauge-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.gauge-val {
+  font-family: 'Orbitron', monospace;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--mint);
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.gauge-unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.gauge-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
